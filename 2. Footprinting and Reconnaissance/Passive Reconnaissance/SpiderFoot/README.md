@@ -134,3 +134,6 @@ Note: Some APIs may limit your results after you have reached a prescribed numbe
 
 + Go to the Settings tab.
 + Find the four modules in the table below. Open the page for the module and complete the table including the type of information that module searches for. For each module in the table, click the ? next to the API option. Follow the instructions to get API keys for the four modules.
++ Enter the API keys in the settings for each module. Be sure to save your changes.
++ Click New Scan. Go to the By Module tab. Select only the modules for which you have added API keys. All other modules should be unchecked.
++ Enter the target as h4cker.org and click Start Scan. Feel free to scan other domains but be sure to observe the terms and conditions of this course.
