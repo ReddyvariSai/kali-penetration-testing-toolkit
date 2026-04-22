@@ -80,11 +80,19 @@ Refer to https://www.spiderfoot.net/documentation/#security.
 
 <img width="1918" height="1018" alt="image" src="https://github.com/user-attachments/assets/3f2b3b36-d6e0-403c-bf3b-8e5fd6c9ae7c" />
 
+Click the New Scan tab in the GUI.
+
 ---
 <img width="1919" height="1019" alt="image" src="https://github.com/user-attachments/assets/c61a17a2-1900-4b37-8a33-85a69f430f17" />
 
+Enter a name for the scan and select a target. In this case, we will use HACKTHEBOX.COM.
+
 ---
 <img width="1699" height="536" alt="image" src="https://github.com/user-attachments/assets/3baee175-a699-404f-bbed-8d1d271ff00b" />
+
+Select the scan use case as Footprint.
+
+Note: The All use case scan may use active scanning. Unless you have permission to scan the target, you should avoid this setting. To be completely safe, the Passive use case should avoid any problems with unauthorized scanning.
 
 ---
 <img width="1115" height="610" alt="Screenshot 2026-04-22 132149" src="https://github.com/user-attachments/assets/d1b81802-bda0-46f8-8b68-63fd534cdd8c" />
@@ -92,11 +100,20 @@ Refer to https://www.spiderfoot.net/documentation/#security.
 ---
 <img width="1144" height="708" alt="image" src="https://github.com/user-attachments/assets/bf050b76-1e13-4aa8-9258-717c58b7a3ea" />
 
+You will scan by use case. Note that you can also scan by the type of information required or by selecting the individual scanner modules that you would like to use. By executing narrower scans, you can learn more about the modules and information that can be gathered.
+
+
+Click the Run Scan Now button.
+
 ---
 <img width="1919" height="1017" alt="image" src="https://github.com/user-attachments/assets/a59d0069-fa46-479c-942d-b9e9a4602de5" />
 
+You should see a bar graph appear. The scan statistics will start to increment, and new bars will appear in the graph as new results are obtained. Mouse over the bars for a summary of the findings for that data type.
+
 ---
 <img width="1330" height="572" alt="image" src="https://github.com/user-attachments/assets/481a3bfe-3583-47fd-bad1-edf5cc31ead0" />
+
+SpiderFoot scans are very detailed and can take a very long time. Give this scan at least 30 minutes so that there is a nice collection of information. To get the most details, a scan could take hours. While the scan is running, you can browse the results.
 
 ---
 <img width="1919" height="879" alt="image" src="https://github.com/user-attachments/assets/ba4e9ec8-ccbe-4946-adeb-db1634492d83" />
@@ -104,5 +121,16 @@ Refer to https://www.spiderfoot.net/documentation/#security.
 ---
 <img width="1903" height="841" alt="image" src="https://github.com/user-attachments/assets/33b16417-69e7-40a6-93f6-31c9e9cdb24d" />
 
++ Go back to the scan results, by clicking the Scans tab. You will see a table with the currently running scan and any previous scans displayed.
++ Click the black square in the right-most column of the scans table to stop the scan. Some information is not available until the scan is aborted or completed.
++ Click the name of the scan in the table to return to the scan view. You will be taken to the Browse tab. Each row in the table represents data found by the various modules. Some modules contribute to multiple types of data.
++ Investigate the results.
 
+## Register API Keys (optional).
 
+API keys will enhance the functionality of SpiderFoot. Some of these API keys require free registration. The pentesting tools that are available are constantly evolving. Some tools or services that were once free and open can become fee-based over time.
+
+Note: Some APIs may limit your results after you have reached a prescribed number of uses.
+
++ Go to the Settings tab.
++ Find the four modules in the table below. Open the page for the module and complete the table including the type of information that module searches for. For each module in the table, click the ? next to the API option. Follow the instructions to get API keys for the four modules.
