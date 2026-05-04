@@ -1,0 +1,95 @@
+## 🧠 Why does this happen?
+
+The "Connected" checkbox is grayed out because:
+1. The **VMware virtual network adapters** (VMnet1/VMnet8) are missing or corrupted on your host 
+2. The **VMware kernel modules** failed to load 
+3. You're trying to change the setting while the VM is running (some versions require VM to be off for this)
+
+---
+
+## ✅ Solution 1: Make sure the VM is powered OFF first
+
+This sounds simple, but many versions of VMware Workstation **require the VM to be powered off** before you can check/uncheck the "Connected" box .
+
+1. **Shut down** the Kali VM completely (not suspend)
+2. Go to **Edit Settings** → **Network Adapter**
+3. See if the checkbox is now clickable
+4. If yes: check both **"Connected"** and **"Connect at power on"**, then set to **NAT**
+5. Power on the VM and test
+
+---
+
+## ✅ Solution 2: Restart VMware services on Windows
+
+If the checkbox is still grayed out, the VMware background services may be stuck .
+
+1. On your **Windows host**, press `Win + R`, type `services.msc`, press Enter
+2. Find and **Restart** (right-click → Restart) these services:
+   - `VMware NAT Service`
+   - `VMware DHCP Service`
+   - `VMware Authorization Service`
+3. After restarting, **close and reopen VMware Workstation**
+4. Power off your VM, check the Network Adapter settings again
+
+---
+
+## ✅ Solution 3: Reset virtual network in Virtual Network Editor
+
+This rebuilds VMware's virtual network infrastructure .
+
+1. **Shut down** your Kali VM
+2. In VMware Workstation, go to **Edit** → **Virtual Network Editor**
+3. Click **Change Settings** (bottom right — needs admin permission)
+4. Select **VMnet8** (NAT)
+5. Click **Restore Defaults** (bottom left)
+6. Wait for the reset to complete (1-2 minutes)
+7. Click **Apply** → **OK**
+8. **Restart your Windows host** (important)
+9. Open VMware, power on the VM, and check if the checkbox is now available
+
+---
+
+## ✅ Solution 4: Enable Device Install Service (Windows)
+
+One often-overlooked cause is Windows services that handle driver installation being disabled .
+
+1. On Windows host, press `Win + R`, type `services.msc`, press Enter
+2. Find **Device Install Service** and **Device Setup Manager**
+3. If either is **Disabled**, right-click → **Properties** → set Startup type to **Manual** or **Automatic**
+4. Click **Start** to run the service
+5. Restart your computer, then try Solution 3 again
+
+---
+
+## ✅ Solution 5: Remove and re-add the network adapter
+
+If the checkbox is grayed out because the adapter is corrupted :
+
+1. **Shut down** the VM
+2. Go to **Edit Settings**
+3. Select **Network Adapter** → click **Remove**
+4. Click **Add** → **Network Adapter** → **Finish**
+5. Set it to **NAT**
+6. Check that "Connected" and "Connect at power on" are now available and checked
+7. Start the VM
+
+---
+
+## 🔄 Solution 6: Reinstall VMware network drivers (last resort)
+
+If nothing above works, the virtual network drivers need a clean reinstall .
+
+**Option A — Repair VMware:**
+1. Open **Control Panel** → **Programs and Features**
+2. Find **VMware Workstation** → right-click → **Change**
+3. Select **Repair** and follow the prompts
+4. Restart your computer
+
+**Option B — Manual driver cleanup:**
+1. Open **Device Manager** (right-click Start button)
+2. Click **View** → **Show hidden devices**
+3. Expand **Network adapters**
+4. Uninstall anything with **VMware Virtual Ethernet Adapter** in the name (right-click → Uninstall)
+5. **Restart your computer**
+6. Open VMware Workstation — the drivers will reinstall automatically
+
